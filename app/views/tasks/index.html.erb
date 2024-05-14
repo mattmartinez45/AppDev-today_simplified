@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all tasks
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new task
+    </h2>
+
+    <form action="/insert_task" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="category_box">
+          Category
+        </label>
+
+        <input type="text" id="category_box" name="query_category">
+      </div>
+
+      <div>
+        <label for="due_date_box">
+          Due date
+        </label>
+
+        <input type="date" id="due_date_box" name="query_due_date">
+      </div>
+
+      <div>
+        <label for="time_estimate_box">
+          Time estimate
+        </label>
+
+        <input type="time" id="time_estimate_box" name="query_time_estimate">
+      </div>
+
+      <button>
+        Create task
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          Due date
+        </th>
+
+        <th>
+          Time estimate
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_tasks.each do |a_task| %>
+      <tr>
+        <td>
+          <%= a_task.id %>
+        </td>
+
+        <td>
+          <%= a_task.user_id %>
+        </td>
+
+        <td>
+          <%= a_task.name %>
+        </td>
+
+        <td>
+          <%= a_task.category %>
+        </td>
+
+        <td>
+          <%= a_task.due_date %>
+        </td>
+
+        <td>
+          <%= a_task.time_estimate %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_task.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_task.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/tasks/<%= a_task.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
